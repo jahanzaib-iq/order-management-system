@@ -1,0 +1,53 @@
+<div class="alert alert-success">Bootstrap is working!</div>
+
+
+<div class="container">
+  <h2>Orders</h2>
+  
+  <button routerLink="/orders/new" class="btn btn-primary mb-3">
+    Create New Order
+  </button>
+
+  <div *ngIf="orders.length === 0" class="alert alert-info">
+    No orders found. Create your first order!
+  </div>
+
+  <table class="table table-striped" *ngIf="orders.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.customerName }}</td>
+        <td>{{ order.product }}</td>
+        <td>{{ order.quantity }}</td>
+        <td>${{ order.price }}</td>
+        <td>
+          <span [class]="'badge ' + getStatusClass(order.status)">
+            {{ order.status }}
+          </span>
+        </td>
+        <td>
+          <button [routerLink]="['/orders', order.id]" class="btn btn-info btn-sm">
+            View
+          </button>
+          <button [routerLink]="['/orders/edit', order.id]" class="btn btn-warning btn-sm mx-1">
+            Edit
+          </button>
+          <button (click)="deleteOrder(order.id)" class="btn btn-danger btn-sm">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

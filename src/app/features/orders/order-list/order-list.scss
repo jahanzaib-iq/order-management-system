@@ -1,0 +1,11 @@
+.badge {
+  &.bg-warning {
+    background-color: #ffc107 !important;
+  }
+  &.bg-success {
+    background-color: #28a745 !important;
+  }
+  &.bg-danger {
+    background-color: #dc3545 !important;
+  }
+}

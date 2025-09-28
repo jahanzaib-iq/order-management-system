@@ -1,0 +1,57 @@
+<div class="container">
+  <h2>{{ isEdit ? 'Edit' : 'Create' }} Order</h2>
+  
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Customer Name</label>
+      <input type="text" class="form-control" formControlName="customerName">
+      <div *ngIf="orderForm.get('customerName')?.invalid && orderForm.get('customerName')?.touched" 
+           class="text-danger">
+        Customer name is required
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Product</label>
+      <input type="text" class="form-control" formControlName="product">
+      <div *ngIf="orderForm.get('product')?.invalid && orderForm.get('product')?.touched" 
+           class="text-danger">
+        Product is required
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Quantity</label>
+      <input type="number" class="form-control" formControlName="quantity">
+      <div *ngIf="orderForm.get('quantity')?.invalid && orderForm.get('quantity')?.touched" 
+           class="text-danger">
+        Quantity must be at least 1
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Price</label>
+      <input type="number" class="form-control" formControlName="price" step="0.01">
+      <div *ngIf="orderForm.get('price')?.invalid && orderForm.get('price')?.touched" 
+           class="text-danger">
+        Price must be 0 or greater
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Status</label>
+      <select class="form-control" formControlName="status">
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!orderForm.valid">
+      {{ isEdit ? 'Update' : 'Create' }} Order
+    </button>
+    <button type="button" class="btn btn-secondary ms-2" routerLink="/orders">
+      Cancel
+    </button>
+  </form>
+</div>
