@@ -1,6 +1,7 @@
 namespace Domain.Shared;
 
-public class BaseEntity
+public abstract class BaseEntity
 {
-    
+  public Datetime CreatedOn { get; set; }
+  public DateTime? UpdatedOn { get; set; }
 }
