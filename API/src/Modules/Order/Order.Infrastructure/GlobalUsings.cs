@@ -1,7 +1,15 @@
-﻿global using System.Linq.Expressions;
+global using System.Linq.Expressions;
 global using Domain.Shared;
 global using Microsoft.EntityFrameworkCore;
 global using Order.Domain.Interfaces.Data;
 global using Order.Domain.Interfaces.Repositories;
 global using System.Reflection;
 global using Microsoft.EntityFrameworkCore.Infrastructure;
+global using Autofac;
+global using Order.Domain.Entities;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Order.Infrastructure.Data;
+global using Microsoft.EntityFrameworkCore.Design;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
