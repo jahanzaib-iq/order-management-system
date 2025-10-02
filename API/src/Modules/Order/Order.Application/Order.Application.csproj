@@ -6,4 +6,12 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Profiles\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Order.Infrastructure\Order.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>

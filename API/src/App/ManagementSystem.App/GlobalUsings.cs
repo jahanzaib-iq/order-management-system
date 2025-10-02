@@ -1,0 +1,15 @@
+global using ManagementSystem.App.Extensions;
+global using Order.Domain.Interfaces.Handlers;
+global using Microsoft.AspNetCore.Mvc;
+global using Order.Application.Requests.Commands;
+global using Order.Application.Requests.Queries;
+global using OrderEntity = Order.Domain.Entities;
+global using Order.Infrastructure.Extensions;
+global using Autofac;
+global using Autofac.Extensions.DependencyInjection;
+global using Order.Domain.Interfaces.Data;
+global using Order.Infrastructure.Data;
+global using Order.Infrastructure.Repositories;
+global using Microsoft.AspNetCore.HttpLogging;
+global using Microsoft.OpenApi.Models;
+global using Order.Application.Extensions;
