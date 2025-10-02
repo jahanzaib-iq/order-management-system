@@ -7,9 +7,9 @@ public interface IGenericRepository<T> where T : BaseEntity
 {
     Task<IQueryable<T>> Table(Expression<Func<T, bool>> predicate);
     Task<List<T>> ToListAsync();
-    Task<T> GetById(Guid id);
-    Task<T> Add(T entity);
-    Task<T> Update(T entity);
-    Task<T> Delete(T entity);
+    Task<T> GetById(object id);
+    Task Insert(T entity);
+    Task Update(T entity);
+    Task Delete(T entity);
     Task<int> SaveChangesAsync();
 }
