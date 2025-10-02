@@ -1,5 +1,10 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
+
+# Ignore all bin and obj folders in the API directory and its subdirectories
+/API/**/bin/
+/API/**/obj/
+
 # Compiled output
 /dist
 /tmp
