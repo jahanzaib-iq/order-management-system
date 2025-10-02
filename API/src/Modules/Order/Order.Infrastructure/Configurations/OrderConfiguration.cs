@@ -30,10 +30,9 @@ public class OrderConfiguration : IEntityTypeConfiguration<Domain.Entities.Order
       .HasMaxLength(200)
       .IsRequired();
 
-    builder.Property(x => x.CustomerName)
+    builder.Property(x => x.StatusId)
       .HasColumnName("status_id")
-      .HasColumnType("varchar")
-      .HasMaxLength(10)
+      .HasColumnType("int")
       .IsRequired();
 
 

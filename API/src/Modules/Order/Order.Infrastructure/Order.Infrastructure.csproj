@@ -7,6 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Seedings\Sql\Insert_Order_Status.sql" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Seedings\Sql\Insert_Order_Status.sql" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\Order.Domain\Order.Domain.csproj" />
     </ItemGroup>
 
