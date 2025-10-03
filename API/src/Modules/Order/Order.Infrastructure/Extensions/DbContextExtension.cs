@@ -12,7 +12,7 @@ public static class DbContextExtension
         x =>
         {
           x.MigrationsHistoryTable("__MigrationHistory", "order");
-        });
+        }).ConfigureWarnings(warnings => warnings.Ignore(Microsoft.EntityFrameworkCore.Diagnostics.RelationalEventId.PendingModelChangesWarning));
     });
   }
 
