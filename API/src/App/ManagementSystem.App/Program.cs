@@ -1,3 +1,4 @@
+using Customer.Infrastructure.Extensions;
 
 var corsPolicy = "CorsPolicy";
 
@@ -31,6 +32,7 @@ if (app.Environment.IsDevelopment())
 
 // For Migrations
 app.SeedingOrderData();
+app.SeedingCustomerData();
 
 app.UseCors(corsPolicy);
 

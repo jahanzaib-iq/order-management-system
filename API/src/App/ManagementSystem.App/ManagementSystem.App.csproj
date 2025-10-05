@@ -13,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Modules\Customer\Customer.Application\Customer.Application.csproj" />
       <ProjectReference Include="..\..\Modules\Order\Order.Application\Order.Application.csproj" />
     </ItemGroup>
 
