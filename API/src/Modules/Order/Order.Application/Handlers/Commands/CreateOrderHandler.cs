@@ -1,15 +1,20 @@
 
+using Domain.Shared.MediatorReplica;
+using Order.Application.Responses;
+
 namespace Order.Application.Handlers.Commands
 {
-  public class CreateOrderHandler(ILogger<CreateOrderHandler> logger, IGenericRepository<OrderEntity.Order> genericRepo) : ICommandHandler<CreateOrderRequest>
+  public class CreateOrderHandler(ILogger<CreateOrderHandler> logger, IGenericRepository<OrderEntity.Order> genericRepo) : IRequestHandler<CreateOrderRequest, CreateOrderResponse>
   {
-    public async Task HandleAsync(CreateOrderRequest command)
+    public async Task<CreateOrderResponse> Handle(CreateOrderRequest request, CancellationToken cancellationToken)
     {
-      OrderEntity.Order order = ConvertCommandToDbEntity(command);
+      OrderEntity.Order order = ConvertCommandToDbEntity(request);
 
       await genericRepo.Insert(order);
 
       logger.LogInformation(message: "Order created.");
+
+      return new CreateOrderResponse { OrderId = order.Id };
     }
 
     private static OrderEntity.Order ConvertCommandToDbEntity(CreateOrderRequest command)

@@ -68,8 +68,8 @@ public class GenericRepository<T>(IOrderDbContext context) : IGenericRepository<
     await Task.FromResult(default(T));
   }
 
-  public async Task<int> SaveChangesAsync()
+  public Task<int> SaveChangesAsync()
   {
-    return await this.context.SaveChangesAsync();
+    throw new NotImplementedException();
   }
 }

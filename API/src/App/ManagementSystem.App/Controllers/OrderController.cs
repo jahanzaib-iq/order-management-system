@@ -1,4 +1,6 @@
 
+using Domain.Shared.MediatorReplica;
+
 namespace ManagementSystem.App.Controllers;
 
 [Route("api/[controller]")]
@@ -6,9 +8,11 @@ namespace ManagementSystem.App.Controllers;
 public class OrderController(IDispatcher dispatcher, ILogger<OrderController> logger) : ControllerBase
 {
   [HttpGet]
+    [ResponseCache()]
   public async Task<IActionResult> Orders()
   {
-    var result = await dispatcher.QueryAsync<GetOrdersRequest, List<OrderEntity.Order>>(new GetOrdersRequest { });
+    throw new Exception();
+    var result = await dispatcher.Send(new GetOrdersRequest());
     return Ok(result);
   }
 
@@ -17,7 +21,7 @@ public class OrderController(IDispatcher dispatcher, ILogger<OrderController> lo
   public async Task<IActionResult> Orders([FromBody] CreateOrderRequest command)
   {
     logger.LogInformation(message: "Request received to create order.");
-    await dispatcher.SendAsync(command);
+    await dispatcher.Send(command);
     logger.LogInformation(message: "Order created successfully.");
 
     return Ok("Order created successfully");
