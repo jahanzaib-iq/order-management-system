@@ -6,7 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 builder.ConfigureAutoFacContainer();
-builder.Services.ConfigureApplicationService(builder.Configuration);
+
+builder.Services.ConfigureGenericServiceInjection();
+builder.Services.ConfigureOrderApplicationService(builder.Configuration);
+builder.Services.ConfigureCustomerApplicationService(builder.Configuration);
 builder.Services.ConfigureSwagger();
 
 builder.Services.AddControllers();
@@ -31,11 +34,15 @@ if (app.Environment.IsDevelopment())
 
 // For Migrations
 app.SeedingOrderData();
+//// app.SeedingCustomerData();
 
 app.UseCors(corsPolicy);
 
 app.UseHttpsRedirection();
 
 app.MapControllers();
+
+app.UseExceptionHandler();
+app.UseStatusCodePages();
 
 await app.RunAsync();
